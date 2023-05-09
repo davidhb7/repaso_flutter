@@ -10,6 +10,13 @@ class Persona {
     required this.estadoVida,
   });
 
+  //TOMANDO EL JSON PERSONA PARA LAS VARIABLES
+  Persona.fromJson(Map<String, dynamic> json) : 
+    nombre = json['nombre'] ?? 'Sin nombre',
+    edad = json['edad'] ?? 'No se sabe',
+    estadoVida = json['estadoVida'] ?? 'Quien sabe'
+  ;
+
   @override
   String toString() {
     return '$nombre, esta vivo?  ${estadoVida ? 'SISA' : 'Paila'} ';
@@ -29,11 +36,13 @@ void main() {
     'estadoVida': true,
   };
   //IMPLEMENTANDO EL rawJson
-  final yo = Persona(
-    nombre: rawYo['nombre'] ?? '', //SÍ ES NULO, PONE VACIO
-    edad: rawYo['edad'] ?? 0, 
-    estadoVida: rawYo['estadoVida'] ?? false
-  );
+  // final yo = Persona(
+  //     nombre: rawYo['nombre'] ?? '', //SÍ ES NULO, PONE VACIO
+  //     edad: rawYo['edad'] ?? 0,
+  //     estadoVida: rawYo['estadoVida'] ?? false);
+
+  //SE LE PASA UN JSON PARA TRANFORMARLO
+  final yo = Persona.fromJson(rawYo);
 
   print(yo);
 }
