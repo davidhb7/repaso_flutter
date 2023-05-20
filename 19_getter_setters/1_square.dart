@@ -1,13 +1,13 @@
 //GUION BAJO ANTES DE LAS VARIABLES, LAS CONVIERTE EN PRIVADAS
 //VARIABLE PRIVADA, SOLO VISIBLE DENTRO DEL SCRIPT
 class Square {
-  double _side;
+  final double _side;
 
   //se le quito  el 'this.' por la especificacion de varible 
-  Square({required double side})
   //la convierte en privada al entrar a la clase
-  //variable privada = varaible deparametro
-  : _side = side;
+  //variable privada = varaible de parametro
+  Square({required double side})  
+  : assert(side>=0, '"side" debe ser mayor a cero...'),_side = side;
 
   double areaCalculate() {
     return _side * _side;
@@ -31,7 +31,7 @@ class Square {
 
 void main(){
   //CREANDO INSTANCIA
-  final mySqure = Square(side: 10);
+  final mySqure = Square(side: -10);
   mySqure.side=-7;
   print('Area: ${mySqure.area}');
 }
